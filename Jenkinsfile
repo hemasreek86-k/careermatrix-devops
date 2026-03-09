@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        ECR_REPO = '<account-id>.dkr.ecr.ap-south-1.amazonaws.com/careermatrix-repo'
+        ECR_REPO = '763209687726.dkr.ecr.ap-south-1.amazonaws.com/careermatrix-repo'
         IMAGE_TAG = 'latest'
     }
 
