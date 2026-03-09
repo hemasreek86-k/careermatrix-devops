@@ -6,11 +6,13 @@ pipeline {
         IMAGE_TAG = 'latest'
     }
 
-    stage('Clone') {
-    steps {
-        git branch: 'main', url: 'https://github.com/hemasreek86-k/careermatrix-devops.git'
-    }
-}
+    stages {
+
+        stage('Clone') {
+            steps {
+                git branch: 'main', url: 'https://github.com/hemasreek86-k/careermatrix-devops.git'
+            }
+        }
 
         stage('Build Docker Image') {
             steps {
@@ -21,7 +23,7 @@ pipeline {
         stage('Push to ECR') {
             steps {
                 sh '''
-                aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin $ECR_REPO
+                aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 763209687726.dkr.ecr.ap-south-1.amazonaws.com
                 docker push $ECR_REPO:$IMAGE_TAG
                 '''
             }
@@ -35,5 +37,6 @@ pipeline {
                 '''
             }
         }
+
     }
 }
