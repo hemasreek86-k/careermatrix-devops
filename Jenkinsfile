@@ -6,13 +6,11 @@ pipeline {
         IMAGE_TAG = 'latest'
     }
 
-    stages {
-
-        stage('Clone') {
-            steps {
-                git 'https://github.com/hemasreek86-k/careermatrix-devops.git'
-            }
-        }
+    stage('Clone') {
+    steps {
+        git branch: 'main', url: 'https://github.com/hemasreek86-k/careermatrix-devops.git'
+    }
+}
 
         stage('Build Docker Image') {
             steps {
